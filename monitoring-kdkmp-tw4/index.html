@@ -2,22 +2,53 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=https://docs.google.com/spreadsheets/d/17aWvl9RaET_huirfP4n-8RnIIQWNbHepHAjVARSHLe8/edit?gid=1831604320#gid=1831604320">
-<title>Mengalihkan...</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monitoring KDKMP TW IV 2026</title>
 <meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2312305e'/%3E%3Cpath d='M14 40l10-12 8 8 16-18' fill='none' stroke='%23fff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M14 50h36' stroke='%23d6363e' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>
-  body { font-family: system-ui, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; background: #f8fafc; color: #1e293b; }
-  .box { text-align: center; }
-  a { color: #2563eb; }
+  html, body { margin: 0; height: 100%; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: #f8fafc; color: #1e293b; display: flex; flex-direction: column; }
+  .bar { flex: none; display: flex; align-items: center; gap: 12px; padding: 6px 14px; background: #12305e; color: #fff; font-size: 13px; }
+  .bar b { font-weight: 600; }
+  .bar .sp { flex: 1; }
+  .bar .hint { opacity: .75; }
+  .bar a { color: #12305e; background: #fff; text-decoration: none; font-weight: 600; padding: 5px 10px; border-radius: 6px; white-space: nowrap; }
+  iframe { flex: 1; width: 100%; border: 0; background: #fff; }
+  .box { margin: auto; text-align: center; padding: 16px; }
+  .box a { color: #2563eb; }
+  @media (max-width: 700px) { .bar .hint { display: none; } }
 </style>
-<script>
-  window.location.replace("https://docs.google.com/spreadsheets/d/17aWvl9RaET_huirfP4n-8RnIIQWNbHepHAjVARSHLe8/edit?gid=1831604320#gid=1831604320");
-</script>
 </head>
 <body>
-  <div class="box">
-    <p>Mengalihkan ke Google Sheets...</p>
-    <p>Jika tidak otomatis terbuka, <a href="https://docs.google.com/spreadsheets/d/17aWvl9RaET_huirfP4n-8RnIIQWNbHepHAjVARSHLe8/edit?gid=1831604320#gid=1831604320">klik di sini</a>.</p>
+  <div class="box" id="msg">
+    <p>Membuka Monitoring KDKMP TW IV 2026...</p>
+    <p>Jika tidak otomatis terbuka, <a id="direct" href="#">klik di sini</a>.</p>
   </div>
+<script>
+  // Sheet Monitoring TW IV 2026 (akses akun @bpkp.go.id)
+  var SHEET = "https://docs.google.com/spreadsheets/d/17aWvl9RaET_huirfP4n-8RnIIQWNbHepHAjVARSHLe8/edit?gid=1831604320#gid=1831604320";
+  document.getElementById("direct").href = SHEET;
+  // HP / layar sempit / tautan "?buka": alihkan langsung seperti shortlink biasa.
+  var mobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || window.innerWidth < 760;
+  if (mobile || /[?&]buka\b/.test(location.search)) {
+    window.location.replace(SHEET);
+  } else {
+    // Laptop/PC: tampilkan sheet di halaman ini agar alamat diperma.github.io tetap terlihat.
+    document.getElementById("msg").remove();
+    var bar = document.createElement("div");
+    bar.className = "bar";
+    bar.innerHTML = '<b>Monitoring KDKMP TW IV 2026</b><span class="sp"></span>' +
+      '<span class="hint">Sheet tidak tampil? Pastikan browser login akun @bpkp.go.id, atau</span>' +
+      '<a href="' + SHEET + '" target="_blank" rel="noopener">Buka di Google Sheets</a>';
+    var fr = document.createElement("iframe");
+    fr.src = SHEET;
+    fr.title = "Monitoring KDKMP TW IV 2026";
+    fr.setAttribute("allow", "clipboard-read; clipboard-write");
+    document.body.appendChild(bar);
+    document.body.appendChild(fr);
+  }
+</script>
+<noscript><p style="text-align:center">Buka <a href="https://docs.google.com/spreadsheets/d/17aWvl9RaET_huirfP4n-8RnIIQWNbHepHAjVARSHLe8/edit?gid=1831604320#gid=1831604320">Monitoring KDKMP TW IV 2026</a>.</p></noscript>
 </body>
 </html>
