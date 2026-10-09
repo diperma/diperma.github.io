@@ -1,745 +1,523 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
-
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Direktorat Pemberdayaan Ekonomi Masyarakat | Membangun Ekonomi Mandiri</title>
-    <meta name="description"
-        content="Portal Resmi Direktorat Pemberdayaan Ekonomi Masyarakat. Fokus pada pengembangan ekonomi desa, UMKM, dan pemetaan lahan produktif melalui program KDKMP.">
-    <meta name="keywords"
-        content="Pemberdayaan Ekonomi, KDKMP, Gerai KDKMP, Ekonomi Masyarakat, UMKM Desa, Pemetaan Lahan">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>diperma — Ruang Kerja Digital Pengawasan KDKMP</title>
+<meta name="description" content="Kumpulan portal, aplikasi data, peta, dan instrumen lapangan yang dibangun Tim APP KDKMP, Direktorat Pengawasan Bidang Pemberdayaan Ekonomi Masyarakat BPKP, untuk mengawal Koperasi Desa/Kelurahan Merah Putih.">
+<meta name="theme-color" content="#0E2350">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E2350'/%3E%3Crect x='14' y='16' width='36' height='7' rx='3.5' fill='%23fff'/%3E%3Crect x='14' y='28.5' width='26' height='7' rx='3.5' fill='%23fff' opacity='.8'/%3E%3Crect x='14' y='41' width='12' height='7' rx='3.5' fill='%23C8102E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0E2350;
+  --ink-2: #1B356E;
+  --paper: #F5F7FA;
+  --card: #FFFFFF;
+  --merah: #C8102E;
+  --steel: #2F5E9E;
+  --line: #D8DEE8;
+  --mute: #5A6577;
+  --soft: #E9EEF5;
+  --display: "Bricolage Grotesque", "Plus Jakarta Sans", system-ui, sans-serif;
+  --body: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --wrap: 1180px;
+  --r: 14px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: var(--steel); }
+:focus-visible { outline: 3px solid var(--steel); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+.mono { font-family: var(--mono); font-weight: 500; letter-spacing: -.01em; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: #fff; padding: 8px 14px; border-radius: 8px; z-index: 50; }
+.skip:focus { left: 12px; }
 
-    <!-- Scripts & Styles -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+/* ---------- navigasi ---------- */
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(245, 247, 250, .88); backdrop-filter: saturate(140%) blur(10px); border-bottom: 1px solid transparent; transition: border-color .2s; }
+.nav.scrolled { border-bottom-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; gap: 28px; height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+.brand-mark { width: 30px; height: 30px; flex: none; }
+.brand-name { font-family: var(--display); font-weight: 800; font-size: 1.25rem; letter-spacing: -.02em; }
+.nav-links { display: flex; gap: 22px; margin-left: auto; }
+.nav-links a { color: var(--ink); text-decoration: none; font-weight: 500; font-size: .93rem; }
+.nav-links a:hover { color: var(--steel); }
+.nav-cta { text-decoration: none; background: var(--ink); color: #fff; font-weight: 600; font-size: .9rem; padding: 9px 16px; border-radius: 999px; white-space: nowrap; }
+.nav-cta:hover { background: var(--ink-2); }
 
-    <style>
-        .nav-link {
-            position: relative;
-        }
+/* ---------- hero ---------- */
+.hero { padding: 72px 0 40px; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+.eyebrow { font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); margin: 0 0 18px; }
+.eyebrow b { color: var(--merah); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2.1rem, 3.7vw, 3.15rem); line-height: 1.06; letter-spacing: -.035em; margin: 0 0 22px; font-variation-settings: "opsz" 96; }
+h1 .num { color: var(--merah); white-space: nowrap; }
+.lede { font-size: 1.12rem; color: #2B3A55; max-width: 34em; margin: 0 0 30px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 20px; border-radius: 999px; font-weight: 600; text-decoration: none; font-size: .97rem; transition: background .15s, color .15s, border-color .15s; }
+.btn-primary { background: var(--merah); color: #fff; }
+.btn-primary:hover { background: #A70D27; }
+.btn-ghost { color: var(--ink); border: 1.5px solid var(--line); background: var(--card); }
+.btn-ghost:hover { border-color: var(--ink); }
+.btn svg { width: 18px; height: 18px; }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #2563eb;
-            transition: width 0.3s;
-        }
+/* tanda tangan: corong KDKMP */
+.funnel { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px 26px 20px; box-shadow: 0 18px 40px -24px rgba(14, 35, 80, .35); }
+.funnel-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 18px; }
+.funnel-title { font-family: var(--display); font-weight: 700; font-size: 1.05rem; margin: 0; letter-spacing: -.01em; }
+.funnel-src { font-size: .75rem; color: var(--mute); }
+.step { display: grid; grid-template-columns: 1fr auto; column-gap: 12px; row-gap: 6px; padding: 12px 0; border-top: 1px solid var(--soft); }
+.step:first-of-type { border-top: 0; }
+.step-label { font-weight: 600; font-size: .92rem; }
+.step-label small { display: block; font-weight: 500; color: var(--mute); font-size: .78rem; }
+.step-num { font-family: var(--display); font-weight: 700; font-size: 1.55rem; letter-spacing: -.02em; text-align: right; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.step-num em { display: block; font-style: normal; font-family: var(--mono); font-size: .72rem; color: var(--mute); font-weight: 500; letter-spacing: 0; }
+.bar { grid-column: 1 / -1; height: 12px; background: var(--soft); border-radius: 999px; overflow: hidden; }
+.bar i { display: block; height: 100%; width: var(--w); border-radius: 999px; background: var(--ink); transform-origin: left; animation: grow 1.1s cubic-bezier(.2, .7, .2, 1) both; animation-delay: var(--d); }
+.step:nth-of-type(2) .bar i { background: var(--ink-2); }
+.step:nth-of-type(3) .bar i { background: var(--steel); }
+.step.last .bar i { background: var(--merah); min-width: 10px; }
+.step.last .step-num { color: var(--merah); }
+@keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.funnel-note { margin: 12px 0 0; font-size: .8rem; color: var(--mute); }
 
-        .nav-link:hover::after {
-            width: 100%;
-        }
+/* ---------- bagian ---------- */
+section { scroll-margin-top: 72px; }
+.band { padding: 72px 0; }
+.band-ink { background: var(--ink); color: #fff; }
+.band-white { background: var(--card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 32px; flex-wrap: wrap; }
+.sec-kicker { font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); margin: 0 0 10px; }
+.band-ink .sec-kicker { color: #9FB4DA; }
+h2 { font-family: var(--display); font-weight: 800; font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.08; letter-spacing: -.03em; margin: 0; max-width: 18em; }
+.sec-lede { color: var(--mute); max-width: 32em; margin: 0; }
+.band-ink .sec-lede { color: #C3D0EA; }
 
-        .glass-morphism {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
+/* sorotan TW IV */
+.live { display: inline-flex; align-items: center; gap: 8px; font-size: .78rem; font-weight: 600; color: #fff; background: rgba(200, 16, 46, .9); padding: 5px 12px; border-radius: 999px; }
+.live::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #fff; animation: pulse 1.8s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .35; } }
+.tw4 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+.tw4 a { grid-column: span 2; display: flex; flex-direction: column; gap: 10px; padding: 22px; border-radius: var(--r); text-decoration: none; color: #fff; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .14); transition: background .18s, border-color .18s, transform .18s; min-height: 190px; }
+.tw4 a:hover { background: rgba(255, 255, 255, .11); border-color: rgba(255, 255, 255, .32); transform: translateY(-2px); }
+.tw4 a.wide { grid-column: span 3; }
+.tw4 .ico { width: 40px; height: 40px; border-radius: 10px; background: #fff; color: var(--ink); display: flex; align-items: center; justify-content: center; }
+.tw4 .ico svg { width: 21px; height: 21px; }
+.tw4 h3 { font-family: var(--display); font-weight: 700; font-size: 1.22rem; letter-spacing: -.015em; margin: 4px 0 0; }
+.tw4 p { margin: 0; color: #C9D5EC; font-size: .93rem; flex: 1; }
+.tw4 .meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: .78rem; color: #9FB4DA; }
+.tw4 .go { color: #fff; font-weight: 600; }
 
-        .hero-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #312e81 100%);
-        }
-    </style>
+/* katalog */
+.tools-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 22px; }
+.chip { font: inherit; font-size: .88rem; font-weight: 600; color: var(--ink); background: var(--card); border: 1.5px solid var(--line); border-radius: 999px; padding: 7px 14px; cursor: pointer; transition: border-color .15s, background .15s, color .15s; }
+.chip:hover { border-color: var(--ink); }
+.chip[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+.chip .n { font-family: var(--mono); font-size: .75rem; opacity: .7; margin-left: 4px; }
+.search { margin-left: auto; position: relative; }
+.search input { font: inherit; font-size: .92rem; width: 260px; max-width: 100%; padding: 9px 14px 9px 36px; border: 1.5px solid var(--line); border-radius: 999px; background: var(--card); color: var(--ink); }
+.search input:focus { outline: none; border-color: var(--steel); box-shadow: 0 0 0 3px rgba(47, 94, 158, .18); }
+.search svg { position: absolute; left: 12px; top: 50%; width: 16px; height: 16px; transform: translateY(-50%); color: var(--mute); }
+.tools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.tool { display: flex; flex-direction: column; gap: 8px; padding: 20px 20px 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); text-decoration: none; color: var(--ink); transition: border-color .15s, box-shadow .15s, transform .15s; }
+.tool:hover { border-color: var(--ink); box-shadow: 0 12px 28px -20px rgba(14, 35, 80, .5); transform: translateY(-2px); }
+.tool-top { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+.tool-cat { font-size: .74rem; font-weight: 600; color: var(--steel); text-transform: uppercase; letter-spacing: .08em; }
+.tag { font-family: var(--mono); font-size: .7rem; padding: 3px 8px; border-radius: 6px; background: var(--soft); color: var(--ink); white-space: nowrap; }
+.tag.now { background: var(--merah); color: #fff; }
+.tool h3 { font-family: var(--display); font-weight: 700; font-size: 1.08rem; letter-spacing: -.01em; margin: 2px 0 0; line-height: 1.25; }
+.tool p { margin: 0; color: var(--mute); font-size: .9rem; flex: 1; }
+.tool-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding-top: 12px; margin-top: 4px; border-top: 1px dashed var(--line); font-size: .78rem; color: var(--mute); }
+.tool-foot .mono { color: var(--ink); font-size: .74rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.access { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.access svg { width: 13px; height: 13px; }
+.empty { display: none; padding: 28px; text-align: center; color: var(--mute); background: var(--card); border: 1px dashed var(--line); border-radius: var(--r); }
+
+/* linimasa triwulan */
+.timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+.tw { padding: 0 20px 0 0; position: relative; }
+.tw-rail { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+.tw-dot { width: 14px; height: 14px; border-radius: 50%; border: 3px solid var(--ink); background: var(--card); flex: none; }
+.tw.current .tw-dot { background: var(--merah); border-color: var(--merah); box-shadow: 0 0 0 5px rgba(200, 16, 46, .15); }
+.tw-line { flex: 1; height: 2px; background: var(--line); }
+.tw:last-child .tw-line { background: linear-gradient(90deg, var(--line), transparent); }
+.tw h3 { font-family: var(--display); font-weight: 800; font-size: 1.5rem; letter-spacing: -.02em; margin: 0; }
+.tw .when { font-size: .8rem; color: var(--mute); margin: 0 0 14px; }
+.tw ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.tw li a { display: block; text-decoration: none; color: var(--ink); font-size: .9rem; font-weight: 500; padding: 8px 12px; border-radius: 10px; background: var(--paper); border: 1px solid var(--line); transition: border-color .15s; }
+.tw li a:hover { border-color: var(--ink); }
+.tw li a span { display: block; font-family: var(--mono); font-size: .7rem; color: var(--mute); }
+
+/* prinsip */
+.principles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.pr h3 { font-family: var(--display); font-weight: 700; font-size: 1.1rem; margin: 14px 0 8px; letter-spacing: -.01em; }
+.pr p { margin: 0; color: var(--mute); font-size: .92rem; }
+.pr .ico { width: 42px; height: 42px; border-radius: 12px; background: var(--soft); color: var(--ink); display: flex; align-items: center; justify-content: center; }
+.pr .ico svg { width: 21px; height: 21px; }
+
+/* footer */
+footer { background: var(--ink); color: #C3D0EA; padding: 48px 0 36px; font-size: .9rem; }
+.foot { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.foot .brand { color: #fff; }
+.foot p { margin: 10px 0 0; max-width: 30em; }
+.foot-links { display: flex; gap: 40px; flex-wrap: wrap; }
+.foot-links h4 { margin: 0 0 10px; color: #fff; font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; }
+.foot-links a { display: block; color: #C3D0EA; text-decoration: none; padding: 3px 0; }
+.foot-links a:hover { color: #fff; }
+.foot-bottom { margin-top: 36px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, .12); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: .8rem; color: #9FB4DA; }
+
+/* ---------- responsif ---------- */
+@media (max-width: 1020px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+  .tools { grid-template-columns: repeat(2, 1fr); }
+  .tw4 a, .tw4 a.wide { grid-column: span 3; }
+  .principles { grid-template-columns: repeat(2, 1fr); }
+  .timeline { grid-template-columns: repeat(2, 1fr); row-gap: 36px; }
+}
+@media (max-width: 720px) {
+  .nav-links { display: none; }
+  .nav-cta { margin-left: auto; }
+  .hero { padding-top: 44px; }
+  .band { padding: 56px 0; }
+  .tools, .principles, .timeline { grid-template-columns: 1fr; }
+  .tw4 a, .tw4 a.wide { grid-column: span 6; min-height: 0; }
+  .search { margin-left: 0; width: 100%; }
+  .search input { width: 100%; }
+  .wrap { padding: 0 16px; }
+  .funnel { padding: 20px 18px 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
 </head>
+<body>
+<a class="skip" href="#aplikasi">Lewati ke daftar aplikasi</a>
 
-<body class="bg-slate-50 text-slate-900 font-sans">
-
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-morphism border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white">
-                        <i data-lucide="trending-up"></i>
-                    </div>
-                    <div>
-                        <span
-                            class="text-xl font-bold text-blue-900 block leading-tight uppercase tracking-tight">Direktorat
-                            PEM</span>
-                        <span class="text-[10px] tracking-widest uppercase text-slate-500 font-bold">Ekonomi
-                            Masyarakat</span>
-                    </div>
-                </div>
-                <div class="hidden md:flex space-x-8 font-medium text-slate-600">
-                    <a href="#home" class="nav-link hover:text-blue-600">Beranda</a>
-                    <a href="#about" class="nav-link hover:text-blue-600">Tentang Kami</a>
-                    <a href="#team" class="nav-link hover:text-blue-600">Tim</a>
-                    <a href="#product" class="nav-link hover:text-blue-600">Produk Unggulan</a>
-                    <a href="#contact"
-                        class="px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Hubungi
-                        Kami</a>
-                </div>
-                <button class="md:hidden p-2 text-slate-600">
-                    <i data-lucide="menu"></i>
-                </button>
-            </div>
-        </div>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="diperma, kembali ke atas">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0E2350"/><rect x="14" y="16" width="36" height="7" rx="3.5" fill="#fff"/><rect x="14" y="28.5" width="26" height="7" rx="3.5" fill="#fff" opacity=".8"/><rect x="14" y="41" width="12" height="7" rx="3.5" fill="#C8102E"/></svg>
+      <span class="brand-name">diperma</span>
+    </a>
+    <nav class="nav-links" aria-label="Navigasi utama">
+      <a href="#tw-iv">TW IV 2026</a>
+      <a href="#aplikasi">Aplikasi</a>
+      <a href="#linimasa">Linimasa</a>
+      <a href="#cara-kerja">Cara kerja</a>
     </nav>
+    <a class="nav-cta" href="https://diperma.github.io/portal-kdkmp-tw-4/">Portal TW IV</a>
+  </div>
+</header>
 
-    <!-- Hero Section -->
-    <section id="home" class="pt-40 pb-24 hero-gradient text-white overflow-hidden relative">
-        <div class="absolute top-0 right-0 w-1/3 h-full bg-blue-500/10 blur-[120px] rounded-full"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center relative z-10">
-            <div class="md:w-1/2 space-y-8 text-center md:text-left">
-                <div
-                    class="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 rounded-full text-blue-200 text-sm font-semibold border border-white/10 backdrop-blur-sm">
-                    Akselerasi Ekonomi Nasional 2024
-                </div>
-                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight">
-                    Transformasi Ekonomi <span class="text-blue-400">Masyarakat</span> Desa
-                </h1>
-                <p class="text-xl text-blue-100 max-w-lg leading-relaxed opacity-90">
-                    Mengoptimalisasi potensi lokal melalui pendampingan berkelanjutan dan digitalisasi pemetaan ekonomi
-                    demi kesejahteraan rakyat.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <a href="#product"
-                        class="px-8 py-4 bg-white text-blue-900 font-bold rounded-2xl hover:bg-blue-50 transition shadow-xl shadow-blue-900/20 flex items-center justify-center gap-2">
-                        Eksplorasi Produk <i data-lucide="chevron-right" class="w-5 h-5"></i>
-                    </a>
-                    <a href="#about"
-                        class="px-8 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded-2xl hover:bg-white/10 transition flex items-center justify-center gap-2">
-                        Pelajari Visi Kami
-                    </a>
-                </div>
-            </div>
-            <div class="md:w-1/2 mt-16 md:mt-0 relative flex justify-center">
-                <div class="relative w-full max-w-md">
-                    <div class="absolute -inset-4 bg-blue-400/20 rounded-[40px] blur-2xl animate-pulse"></div>
-                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2026&auto=format&fit=crop"
-                        alt="Pemberdayaan Ekonomi"
-                        class="rounded-[32px] shadow-2xl relative z-10 border border-white/20 transform hover:scale-[1.02] transition duration-500">
-                </div>
-            </div>
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow"><b>Tim APP KDKMP</b> · Direktorat Pengawasan Bidang Pemberdayaan Ekonomi Masyarakat · BPKP</p>
+        <h1>Mengawal <span class="num">83.382</span> Koperasi Desa/Kelurahan Merah Putih, dari lahan sampai gerai beroperasi.</h1>
+        <p class="lede">Portal, aplikasi data, peta, dan instrumen lapangan yang kami bangun untuk pengawasan KDKMP. Semua titik masuk untuk Perwakilan dan Pusat ada di halaman ini, triwulan demi triwulan.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://diperma.github.io/portal-kdkmp-tw-4/">
+            Buka Portal Pengawasan TW IV
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#aplikasi">Lihat semua aplikasi</a>
         </div>
-    </section>
+      </div>
 
-    <!-- Summary Stats Section -->
-    <section class="py-12 -mt-12 relative z-20">
-        <div class="max-w-7xl mx-auto px-4 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div
-                    class="bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col items-center text-center">
-                    <div class="w-12 h-12 bg-blue-50 rounded-2xl text-blue-600 flex items-center justify-center mb-4">
-                        <i data-lucide="map"></i>
-                    </div>
-                    <div class="text-3xl font-extrabold text-slate-900 mb-1">38</div>
-                    <div class="text-xs text-slate-500 font-bold uppercase tracking-widest">Provinsi Terjangkau</div>
-                </div>
-                <div
-                    class="bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col items-center text-center">
-                    <div class="w-12 h-12 bg-green-50 rounded-2xl text-green-600 flex items-center justify-center mb-4">
-                        <i data-lucide="home"></i>
-                    </div>
-                    <div class="text-3xl font-extrabold text-slate-900 mb-1">12K+</div>
-                    <div class="text-xs text-slate-500 font-bold uppercase tracking-widest">Desa Terdata</div>
-                </div>
-                <div
-                    class="bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col items-center text-center">
-                    <div
-                        class="w-12 h-12 bg-orange-50 rounded-2xl text-orange-600 flex items-center justify-center mb-4">
-                        <i data-lucide="shopping-bag"></i>
-                    </div>
-                    <div class="text-3xl font-extrabold text-slate-900 mb-1">45.8K</div>
-                    <div class="text-xs text-slate-500 font-bold uppercase tracking-widest">Unit Usaha Gerai</div>
-                </div>
-                <div
-                    class="bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col items-center text-center">
-                    <div
-                        class="w-12 h-12 bg-indigo-50 rounded-2xl text-indigo-600 flex items-center justify-center mb-4">
-                        <i data-lucide="users"></i>
-                    </div>
-                    <div class="text-3xl font-extrabold text-slate-900 mb-1">1.2M</div>
-                    <div class="text-xs text-slate-500 font-bold uppercase tracking-widest">Tenaga Kerja</div>
-                </div>
-            </div>
+      <figure class="funnel" aria-labelledby="funnel-title" style="margin:0">
+        <div class="funnel-head">
+          <p class="funnel-title" id="funnel-title">Perjalanan KDKMP yang kami awasi</p>
+          <span class="funnel-src mono">6 Okt 2026</span>
         </div>
-    </section>
-
-    <!-- Welcome Section -->
-    <section id="about" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 lg:px-8">
-            <div class="flex flex-col md:flex-row gap-20 items-center">
-                <div class="md:w-1/2">
-                    <div
-                        class="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
-                        Selamat Datang
-                    </div>
-                    <h2 class="text-4xl font-bold text-slate-900 mb-8 leading-tight">Mewujudkan Kedaulatan Ekonomi
-                        Masyarakat Secara Inklusif</h2>
-                    <p class="text-slate-600 mb-8 text-lg leading-relaxed">
-                        Kami adalah perpanjangan tangan pemerintah dalam memastikan setiap lapisan masyarakat memiliki
-                        akses terhadap peluang ekonomi. Melalui kebijakan berbasis data dan pendampingan lapangan, kami
-                        membangun fondasi ekonomi yang kuat mulai dari akar rumput.
-                    </p>
-                    <div class="space-y-4">
-                        <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition">
-                            <div
-                                class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shrink-0 shadow-lg shadow-blue-200">
-                                <i data-lucide="check-circle-2" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900">Transparansi Data</h4>
-                                <p class="text-sm text-slate-500">Pemanfaatan sistem digital untuk pemetaan potensi
-                                    lahan dan usaha secara terbuka.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition">
-                            <div
-                                class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shrink-0 shadow-lg shadow-blue-200">
-                                <i data-lucide="trending-up" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900">Pertumbuhan Terukur</h4>
-                                <p class="text-sm text-slate-500">Menitikberatkan pada hasil yang berdampak langsung
-                                    pada pendapatan rumah tangga.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="md:w-1/2 grid grid-cols-2 gap-6">
-                    <div class="space-y-6 mt-12">
-                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop"
-                            class="rounded-3xl shadow-lg border border-slate-100" alt="Kolaborasi">
-                        <div class="bg-blue-600 p-8 rounded-3xl text-white">
-                            <i data-lucide="quote" class="w-8 h-8 mb-4 opacity-50"></i>
-                            <p class="font-medium italic leading-relaxed">"Ekonomi yang kuat bermula dari masyarakat
-                                yang berdaya."</p>
-                        </div>
-                    </div>
-                    <div class="space-y-6">
-                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=2074&auto=format&fit=crop"
-                            class="rounded-3xl shadow-lg border border-slate-100" alt="Teamwork">
-                        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1974&auto=format&fit=crop"
-                            class="rounded-3xl shadow-lg border border-slate-100" alt="Pemberdayaan">
-                    </div>
-                </div>
-            </div>
+        <div class="step">
+          <div class="step-label">Populasi KDKMP<small>Koperasi terdaftar di desa/kelurahan</small></div>
+          <div class="step-num">83.382<em>100%</em></div>
+          <div class="bar"><i style="--w:100%;--d:.1s"></i></div>
         </div>
-    </section>
-
-    <!-- Simplified Product Section -->
-    <section id="product" class="py-24 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 lg:px-8">
-            <div class="bg-white rounded-[40px] p-8 md:p-16 border border-slate-200 shadow-sm overflow-hidden relative">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full -mr-20 -mt-20"></div>
-
-                <div class="flex flex-col lg:flex-row items-center gap-16 relative z-10">
-                    <div class="lg:w-1/2 space-y-6">
-                        <div
-                            class="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase tracking-widest">
-                            Produk Unggulan
-                        </div>
-                        <h3 class="text-4xl font-extrabold text-slate-900 leading-tight">Portal Digital KDKMP: Pemetaan
-                            Lahan Real-Time</h3>
-                        <p class="text-lg text-slate-600 leading-relaxed">
-                            Aplikasi pemetaan strategis yang mengintegrasikan data spasial lokasi gerai, verifikasi
-                            lahan produktif, dan progres pembangunan fisik di seluruh Indonesia. Dirancang untuk
-                            transparansi dan efisiensi manajemen aset ekonomi masyarakat.
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-center gap-3 text-slate-700 font-medium">
-                                <i data-lucide="check" class="w-5 h-5 text-green-500"></i> Monitoring Progres
-                                Pembangunan 100%
-                            </li>
-                            <li class="flex items-center gap-3 text-slate-700 font-medium">
-                                <i data-lucide="check" class="w-5 h-5 text-green-500"></i> Visualisasi Sebaran Geografis
-                                Interaktif
-                            </li>
-                            <li class="flex items-center gap-3 text-slate-700 font-medium">
-                                <i data-lucide="check" class="w-5 h-5 text-green-500"></i> Database Lahan Terverifikasi
-                                Nasional
-                            </li>
-                        </ul>
-                        <div class="pt-4">
-                            <a href="https://diperma.github.io/peta-gudang/" target="_blank"
-                                class="px-10 py-5 bg-blue-600 text-white font-bold rounded-2xl hover:bg-blue-700 transition shadow-xl shadow-blue-200 flex items-center justify-center gap-3 w-fit">
-                                Buka Portal KDKMP <i data-lucide="external-link" class="w-5 h-5"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="lg:w-1/2 relative">
-                        <div class="bg-slate-100 rounded-3xl p-4 shadow-inner border border-slate-200">
-                            <!-- Mockup representasi peta sederhana -->
-                            <div
-                                class="bg-slate-200 rounded-2xl h-80 w-full relative overflow-hidden flex items-center justify-center group">
-                                <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=2033&auto=format&fit=crop"
-                                    class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition duration-700"
-                                    alt="Map Preview">
-                                <div class="relative z-10 text-center px-6">
-                                    <div
-                                        class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-2xl mx-auto mb-4 text-blue-600 animate-bounce">
-                                        <i data-lucide="map-pin" class="w-8 h-8"></i>
-                                    </div>
-                                    <p
-                                        class="text-blue-900 font-bold bg-white/80 backdrop-blur-md px-4 py-2 rounded-xl text-sm">
-                                        Pratinjau Interaktif Tersedia di Portal</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            class="absolute -bottom-6 -right-6 bg-white p-6 rounded-3xl shadow-xl border border-slate-100 hidden md:block">
-                            <div class="flex items-center gap-4">
-                                <div class="text-right">
-                                    <p class="text-[10px] font-bold text-slate-400 uppercase">Aktif Terpantau</p>
-                                    <p class="text-xl font-black text-blue-600">38 Provinsi</p>
-                                </div>
-                                <div
-                                    class="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center text-blue-600">
-                                    <i data-lucide="activity" class="w-5 h-5"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- New Segment: RAB Reviu -->
-            <div
-                class="mt-12 bg-white rounded-[40px] p-8 md:p-16 border border-slate-200 shadow-sm overflow-hidden relative">
-                <div class="absolute top-0 left-0 w-64 h-64 bg-green-50 rounded-full -ml-20 -mt-20"></div>
-
-                <div class="flex flex-col lg:flex-row-reverse items-center gap-16 relative z-10">
-                    <div class="lg:w-1/2 space-y-6">
-                        <div
-                            class="inline-block px-4 py-1.5 bg-green-50 text-green-600 rounded-full text-xs font-bold uppercase tracking-widest">
-                            Transparansi Anggaran
-                        </div>
-                        <h3 class="text-4xl font-extrabold text-slate-900 leading-tight">Rincian Biaya Pembangunan Gerai
-                            KDKMP</h3>
-                        <p class="text-lg text-slate-600 leading-relaxed">
-                            Platform transparansi anggaran yang menyajikan rincian biaya pembangunan gerai secara detail
-                            dan akuntabel. Dilengkapi dengan penjelasan cerdas berbasis AI untuk setiap komponen biaya.
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-center gap-3 text-slate-700 font-medium">
-                                <i data-lucide="check" class="w-5 h-5 text-green-500"></i> Analisis Item Pekerjaan
-                                Mendetail
-                            </li>
-                            <li class="flex items-center gap-3 text-slate-700 font-medium">
-                                <i data-lucide="check" class="w-5 h-5 text-green-500"></i> Penjelasan Teknis Berbasis AI
-                            </li>
-                            <li class="flex items-center gap-3 text-slate-700 font-medium">
-                                <i data-lucide="check" class="w-5 h-5 text-green-500"></i> Rekapitulasi Biaya Terperinci
-                            </li>
-                        </ul>
-                        <div class="pt-4">
-                            <a href="https://diperma.github.io/rab-reviu/" target="_blank"
-                                class="px-10 py-5 bg-green-600 text-white font-bold rounded-2xl hover:bg-green-700 transition shadow-xl shadow-green-200 flex items-center justify-center gap-3 w-fit">
-                                Lihat Rincian RAB <i data-lucide="external-link" class="w-5 h-5"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="lg:w-1/2 relative">
-                        <div class="bg-slate-100 rounded-3xl p-4 shadow-inner border border-slate-200">
-                            <!-- Mockup representasi -->
-                            <div
-                                class="bg-slate-200 rounded-2xl h-80 w-full relative overflow-hidden flex items-center justify-center group">
-                                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2032&auto=format&fit=crop"
-                                    class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition duration-700"
-                                    alt="RAB Preview">
-                                <div class="relative z-10 text-center px-6">
-                                    <div
-                                        class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-2xl mx-auto mb-4 text-green-600 animate-bounce">
-                                        <i data-lucide="calculator" class="w-8 h-8"></i>
-                                    </div>
-                                    <p
-                                        class="text-green-900 font-bold bg-white/80 backdrop-blur-md px-4 py-2 rounded-xl text-sm">
-                                        Simulasi Anggaran Tersedia</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            class="absolute -bottom-6 -left-6 bg-white p-6 rounded-3xl shadow-xl border border-slate-100 hidden md:block">
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-10 h-10 bg-green-50 rounded-full flex items-center justify-center text-green-600">
-                                    <i data-lucide="file-check" class="w-5 h-5"></i>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-[10px] font-bold text-slate-400 uppercase">Status Data</p>
-                                    <p class="text-xl font-black text-green-600">Tervalidasi</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Third Segment: Dashbor Pemantauan -->
-            <div
-                class="mt-12 bg-white rounded-[40px] p-8 md:p-16 border border-slate-200 shadow-sm overflow-hidden relative">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-orange-50 rounded-full -mr-20 -mt-20"></div>
-
-                <div class="flex flex-col lg:flex-row items-center gap-16 relative z-10">
-                    <div class="lg:w-1/2 space-y-6">
-                        <div
-                            class="inline-block px-4 py-1.5 bg-orange-50 text-orange-600 rounded-full text-xs font-bold uppercase tracking-widest">
-                            Evaluasi Kinerja
-                        </div>
-                        <h3 class="text-4xl font-extrabold text-slate-900 leading-tight">Dashbor Pemantauan Kertas Kerja
-                            Perwakilan</h3>
-                        <p class="text-lg text-slate-600 leading-relaxed">
-                            Aplikasi dashbor interaktif untuk memonitor dan mengevaluasi status penyelesaian kertas
-                            kerja perwakilan secara terpusat. Menyajikan insight data kinerja secara visual dan
-                            real-time.
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-center gap-3 text-slate-700 font-medium">
-                                <i data-lucide="check" class="w-5 h-5 text-orange-500"></i> Pantau Progres Real-Time
-                            </li>
-                            <li class="flex items-center gap-3 text-slate-700 font-medium">
-                                <i data-lucide="check" class="w-5 h-5 text-orange-500"></i> Visualisasi Matriks Kinerja
-                            </li>
-                            <li class="flex items-center gap-3 text-slate-700 font-medium">
-                                <i data-lucide="check" class="w-5 h-5 text-orange-500"></i> Rekapitulasi Data
-                                Terintegrasi
-                            </li>
-                        </ul>
-                        <div class="pt-4">
-                            <a href="https://diperma.github.io/kkm-tw-i-perwakilan/" target="_blank"
-                                class="px-10 py-5 bg-orange-600 text-white font-bold rounded-2xl hover:bg-orange-700 transition shadow-xl shadow-orange-200 flex items-center justify-center gap-3 w-fit">
-                                Buka Dashbor Evaluasi <i data-lucide="external-link" class="w-5 h-5"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="lg:w-1/2 relative">
-                        <div class="bg-slate-100 rounded-3xl p-4 shadow-inner border border-slate-200">
-                            <!-- Mockup representasi -->
-                            <div
-                                class="bg-slate-200 rounded-2xl h-80 w-full relative overflow-hidden flex items-center justify-center group">
-                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
-                                    class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition duration-700"
-                                    alt="Dashboard Preview">
-                                <div class="relative z-10 text-center px-6">
-                                    <div
-                                        class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-2xl mx-auto mb-4 text-orange-600 animate-bounce">
-                                        <i data-lucide="pie-chart" class="w-8 h-8"></i>
-                                    </div>
-                                    <p
-                                        class="text-orange-900 font-bold bg-white/80 backdrop-blur-md px-4 py-2 rounded-xl text-sm">
-                                        Statistik Interaktif Tersedia</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            class="absolute -bottom-6 -right-6 bg-white p-6 rounded-3xl shadow-xl border border-slate-100 hidden md:block">
-                            <div class="flex items-center gap-4">
-                                <div class="text-right">
-                                    <p class="text-[10px] font-bold text-slate-400 uppercase">Integrasi Data</p>
-                                    <p class="text-xl font-black text-orange-600">Terpusat</p>
-                                </div>
-                                <div
-                                    class="w-10 h-10 bg-orange-50 rounded-full flex items-center justify-center text-orange-600">
-                                    <i data-lucide="bar-chart-2" class="w-5 h-5"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Fourth Segment: Dashboard Peta Lahan -->
-            <div
-                class="mt-12 bg-white rounded-[40px] p-8 md:p-16 border border-slate-200 shadow-sm overflow-hidden relative">
-                <div class="absolute top-0 left-0 w-64 h-64 bg-purple-50 rounded-full -ml-20 -mt-20"></div>
-
-                <div class="flex flex-col lg:flex-row-reverse items-center gap-16 relative z-10">
-                    <div class="lg:w-1/2 space-y-6">
-                        <div
-                            class="inline-block px-4 py-1.5 bg-purple-50 text-purple-600 rounded-full text-xs font-bold uppercase tracking-widest">
-                            Pemetaan Spasial
-                        </div>
-                        <h3 class="text-4xl font-extrabold text-slate-900 leading-tight">Dashboard Peta Lahan</h3>
-                        <p class="text-lg text-slate-600 leading-relaxed">
-                            Aplikasi sistem informasi geografis komprehensif untuk memetakan dan menganalisis potensi lahan di seluruh wilayah kerja. Memudahkan pengambilan keputusan berbasis data keruangan secara presisi.
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-center gap-3 text-slate-700 font-medium">
-                                <i data-lucide="check" class="w-5 h-5 text-purple-500"></i> Pemetaan Geografis Akurat
-                            </li>
-                            <li class="flex items-center gap-3 text-slate-700 font-medium">
-                                <i data-lucide="check" class="w-5 h-5 text-purple-500"></i> Analisis Potensi Lahan
-                            </li>
-                            <li class="flex items-center gap-3 text-slate-700 font-medium">
-                                <i data-lucide="check" class="w-5 h-5 text-purple-500"></i> Integrasi Data Spasial
-                            </li>
-                        </ul>
-                        <div class="pt-4">
-                            <a href="https://diperma.github.io/peta-lahan/" target="_blank"
-                                class="px-10 py-5 bg-purple-600 text-white font-bold rounded-2xl hover:bg-purple-700 transition shadow-xl shadow-purple-200 flex items-center justify-center gap-3 w-fit">
-                                Buka Peta Lahan <i data-lucide="external-link" class="w-5 h-5"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="lg:w-1/2 relative">
-                        <div class="bg-slate-100 rounded-3xl p-4 shadow-inner border border-slate-200">
-                            <!-- Mockup representasi -->
-                            <div
-                                class="bg-slate-200 rounded-2xl h-80 w-full relative overflow-hidden flex items-center justify-center group">
-                                <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2074&auto=format&fit=crop"
-                                    class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition duration-700"
-                                    alt="Map Dashboard Preview">
-                                <div class="relative z-10 text-center px-6">
-                                    <div
-                                        class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-2xl mx-auto mb-4 text-purple-600 animate-bounce">
-                                        <i data-lucide="map" class="w-8 h-8"></i>
-                                    </div>
-                                    <p
-                                        class="text-purple-900 font-bold bg-white/80 backdrop-blur-md px-4 py-2 rounded-xl text-sm">
-                                        Eksplorasi Peta Interaktif</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            class="absolute -bottom-6 -left-6 bg-white p-6 rounded-3xl shadow-xl border border-slate-100 hidden md:block">
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-10 h-10 bg-purple-50 rounded-full flex items-center justify-center text-purple-600">
-                                    <i data-lucide="globe" class="w-5 h-5"></i>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-[10px] font-bold text-slate-400 uppercase">Cakupan Pemetaan</p>
-                                    <p class="text-xl font-black text-purple-600">Komprehensif</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="step">
+          <div class="step-label">Lahan terpetakan<small>Gerai tercatat di Portal KDKMP</small></div>
+          <div class="step-num">36.369<em>43,6%</em></div>
+          <div class="bar"><i style="--w:43.6%;--d:.3s"></i></div>
         </div>
-    </section>
-
-    <!-- Our Team Section -->
-    <section id="team" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-20">
-                <div
-                    class="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
-                    Our Professionals
-                </div>
-                <h3 class="text-4xl font-bold text-slate-900 mb-4">Digerakkan Oleh Tim Ahli</h3>
-                <p class="text-slate-500">Berpengalaman dalam pengembangan ekonomi daerah, analisis data, dan
-                    pendampingan masyarakat desa.</p>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- Member 1 -->
-                <div class="group">
-                    <div class="relative rounded-[40px] overflow-hidden mb-6 h-[450px]">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop"
-                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
-                            alt="Direktur">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex items-end p-10">
-                            <div class="text-white">
-                                <p class="text-sm font-medium mb-1">Expertise</p>
-                                <p class="text-xs opacity-70">Ekonomi Pembangunan, Kebijakan Publik, Manajemen Aset</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <h4 class="text-2xl font-bold text-slate-900 mb-1">Dr. Ir. Heru Setiawan, M.Si</h4>
-                        <p class="text-blue-600 font-bold text-sm tracking-widest uppercase">Direktur Utama</p>
-                    </div>
-                </div>
-                <!-- Member 2 -->
-                <div class="group">
-                    <div class="relative rounded-[40px] overflow-hidden mb-6 h-[450px]">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop"
-                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
-                            alt="Head of KDKMP">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex items-end p-10">
-                            <div class="text-white">
-                                <p class="text-sm font-medium mb-1">Expertise</p>
-                                <p class="text-xs opacity-70">Manajemen Operasional, Pemberdayaan UMKM</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <h4 class="text-2xl font-bold text-slate-900 mb-1">Ananda Putri, MBA</h4>
-                        <p class="text-blue-600 font-bold text-sm tracking-widest uppercase">Kepala Divisi KDKMP</p>
-                    </div>
-                </div>
-                <!-- Member 3 -->
-                <div class="group">
-                    <div class="relative rounded-[40px] overflow-hidden mb-6 h-[450px]">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop"
-                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
-                            alt="Tech Lead">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex items-end p-10">
-                            <div class="text-white">
-                                <p class="text-sm font-medium mb-1">Expertise</p>
-                                <p class="text-xs opacity-70">Sistem Informasi Geografis (GIS), Big Data Analysis</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <h4 class="text-2xl font-bold text-slate-900 mb-1">Budiman Santoso, M.Kom</h4>
-                        <p class="text-blue-600 font-bold text-sm tracking-widest uppercase">Head of Data & Analytics
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <div class="step">
+          <div class="step-label">Gedung terbangun<small>Progres fisik 100%</small></div>
+          <div class="step-num">27.603<em>33,1%</em></div>
+          <div class="bar"><i style="--w:33.1%;--d:.5s"></i></div>
         </div>
-    </section>
-
-    <!-- Location & Contact Section -->
-    <section id="contact" class="py-24 bg-slate-900 text-white relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent">
+        <div class="step last">
+          <div class="step-label">Sudah beroperasi<small>Daftar resmi KDKMP beroperasi</small></div>
+          <div class="step-num">1.075<em>1,3%</em></div>
+          <div class="bar"><i style="--w:1.3%;--d:.7s"></i></div>
         </div>
-        <div class="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
-                <div class="space-y-12">
-                    <div>
-                        <div
-                            class="inline-block px-4 py-1.5 bg-blue-500/20 text-blue-400 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
-                            Hubungi Kami
-                        </div>
-                        <h3 class="text-4xl md:text-5xl font-bold mb-8 leading-tight">Bersama Kita Bangun Ekonomi
-                            Masyarakat</h3>
-                        <p class="text-slate-400 text-lg">Konsultasikan potensi wilayah Anda atau ajukan kerjasama
-                            program melalui saluran resmi kami.</p>
-                    </div>
+        <figcaption class="funnel-note">Sumber: Portal KDKMP dan master 84.070 KDKMP, diolah Tim APP KDKMP. Persentase terhadap populasi.</figcaption>
+      </figure>
+    </div>
+  </section>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                        <div class="space-y-4">
-                            <div
-                                class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400">
-                                <i data-lucide="map-pin"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Kantor Pusat
-                                </p>
-                                <p class="font-bold">Jl. Gatot Subroto No. Kav 52-53, Jakarta Selatan</p>
-                            </div>
-                        </div>
-                        <div class="space-y-4">
-                            <div
-                                class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400">
-                                <i data-lucide="mail"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Email Resmi
-                                </p>
-                                <p class="font-bold">info@ekonomi-masyarakat.go.id</p>
-                            </div>
-                        </div>
-                        <div class="space-y-4">
-                            <div
-                                class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400">
-                                <i data-lucide="phone-call"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Layanan
-                                    Publik</p>
-                                <p class="font-bold">021-123-4567</p>
-                            </div>
-                        </div>
-                        <div class="space-y-4">
-                            <div
-                                class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400">
-                                <i data-lucide="clock"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Jam
-                                    Operasional</p>
-                                <p class="font-bold">Senin - Jumat: 08:00 - 17:00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-[40px] p-8 md:p-12 text-slate-900 shadow-2xl relative">
-                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-600 rounded-full opacity-10 blur-3xl">
-                    </div>
-                    <h4 class="text-2xl font-extrabold mb-8">Kirim Pesan Langsung</h4>
-                    <form class="space-y-5">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold text-slate-400 uppercase ml-1">Nama Lengkap</label>
-                                <input type="text" placeholder="Masukkan nama..."
-                                    class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 outline-none focus:ring-2 focus:ring-blue-600 transition">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold text-slate-400 uppercase ml-1">Email</label>
-                                <input type="email" placeholder="contoh@mail.com..."
-                                    class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 outline-none focus:ring-2 focus:ring-blue-600 transition">
-                            </div>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-xs font-bold text-slate-400 uppercase ml-1">Pesan Anda</label>
-                            <textarea rows="4" placeholder="Bagaimana kami bisa membantu Anda?"
-                                class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 outline-none focus:ring-2 focus:ring-blue-600 transition resize-none"></textarea>
-                        </div>
-                        <button type="submit"
-                            class="w-full bg-blue-600 text-white font-bold py-5 rounded-2xl hover:bg-blue-700 transition shadow-xl shadow-blue-200 active:scale-[0.98]">Kirim
-                            Pesan Sekarang</button>
-                    </form>
-                </div>
-            </div>
+  <section class="band band-ink" id="tw-iv" aria-labelledby="tw-iv-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="sec-kicker">Sedang berjalan</p>
+          <h2 id="tw-iv-title">Pengawasan pembangunan gedung KDKMP, Triwulan IV 2026</h2>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-16 bg-slate-950 text-slate-500">
-        <div class="max-w-7xl mx-auto px-4 lg:px-8">
-            <div
-                class="flex flex-col md:flex-row justify-between items-center gap-10 border-b border-slate-900 pb-12 mb-12">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white">
-                        <i data-lucide="trending-up" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <span
-                            class="text-xl font-bold text-white block leading-tight uppercase tracking-tight">Direktorat
-                            PEM</span>
-                        <span class="text-[10px] tracking-widest uppercase text-slate-500 font-bold">Ekonomi
-                            Masyarakat</span>
-                    </div>
-                </div>
-                <div class="flex gap-8 text-sm font-bold uppercase tracking-widest">
-                    <a href="#" class="hover:text-blue-400 transition">Beranda</a>
-                    <a href="#" class="hover:text-blue-400 transition">Kebijakan</a>
-                    <a href="#" class="hover:text-blue-400 transition">Laporan</a>
-                    <a href="#" class="hover:text-blue-400 transition">FAQ</a>
-                </div>
-                <div class="flex gap-4">
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 hover:text-white transition"><i
-                            data-lucide="twitter" class="w-4 h-4"></i></a>
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 hover:text-white transition"><i
-                            data-lucide="instagram" class="w-4 h-4"></i></a>
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 hover:text-white transition"><i
-                            data-lucide="facebook" class="w-4 h-4"></i></a>
-                </div>
-            </div>
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-medium">
-                <p>&copy; 2024 Portal KDKMP - Direktorat Pemberdayaan Ekonomi Masyarakat. Hak Cipta Dilindungi.</p>
-                <div class="flex gap-6 uppercase tracking-widest opacity-60">
-                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition">Terms of Service</a>
-                </div>
-            </div>
+        <div>
+          <span class="live">Aktif untuk 36 Perwakilan</span>
         </div>
-    </footer>
+      </div>
+      <div class="tw4">
+        <a class="wide" href="https://diperma.github.io/portal-kdkmp-tw-4/">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="4" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="4" y="13" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="13" width="7" height="7" rx="2" fill="currentColor"/></svg></span>
+          <h3>Portal Pengawasan TW IV</h3>
+          <p>Satu pintu untuk panduan teknis, format dan unggah kertas kerja, rekaman diseminasi, monitoring, laporan evaluasi, serta aplikasi data.</p>
+          <span class="meta"><span class="mono">portal-kdkmp-tw-4</span><span class="go">Buka →</span></span>
+        </a>
+        <a class="wide" href="https://diperma.github.io/uji-petik-kdkmp-tw-4/">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.2C5 5.9 8.1 3 12 3s7 2.9 7 6.8C19 14.9 12 21 12 21Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9.3 9.6 1.9 1.9 3.6-3.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Lokus Uji Petik KDKMP</h3>
+          <p>Satu kab/kota lokus per Perwakilan dengan maksimal 10 lokasi, ditambah usulan perubahan lokasi yang disetujui D302.</p>
+          <span class="meta"><span class="mono">uji-petik-kdkmp-tw-4</span><span class="go">Login @bpkp.go.id →</span></span>
+        </a>
+        <a href="https://diperma.github.io/populasi-kdkmp-tw-4/">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 21 8l-9 5-9-5 9-5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Populasi KDKMP (BNBA)</h3>
+          <p>Rekap wilayah dari provinsi sampai desa, dengan daftar per nama gerai, mandek, beroperasi, dan belum punya lahan.</p>
+          <span class="meta"><span class="mono">populasi-kdkmp-tw-4</span><span class="go">→</span></span>
+        </a>
+        <a href="https://diperma.github.io/monitoring-kdkmp-tw4/">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 15.5 8.5 10l3 3L17 6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 6.5h4v4M4 19.5h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Monitoring TW IV</h3>
+          <p>Isian status penugasan, laporan, dan SHP setiap Perwakilan dalam satu sheet bersama.</p>
+          <span class="meta"><span class="mono">monitoring-kdkmp-tw4</span><span class="go">→</span></span>
+        </a>
+        <a href="https://diperma.github.io/mindmap-kdkmp/">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.8"/><circle cx="5" cy="6" r="2" stroke="currentColor" stroke-width="1.8"/><circle cx="19" cy="6" r="2" stroke="currentColor" stroke-width="1.8"/><circle cx="5" cy="18" r="2" stroke="currentColor" stroke-width="1.8"/><circle cx="19" cy="18" r="2" stroke="currentColor" stroke-width="1.8"/><path d="m6.6 7.2 3.4 3M17.4 7.2l-3.4 3M6.6 16.8l3.4-3M17.4 16.8l-3.4-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <h3>Mindmap Titik Kritis</h3>
+          <p>Proses bisnis, sub probis, hipotesis, dan risiko KDKMP sebagai dasar analisis titik kritis APP TW IV.</p>
+          <span class="meta"><span class="mono">mindmap-kdkmp</span><span class="go">→</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
+  <section class="band" id="aplikasi" aria-labelledby="apl-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="sec-kicker">Katalog</p>
+          <h2 id="apl-title">Semua aplikasi Tim APP KDKMP</h2>
+        </div>
+        <p class="sec-lede" id="apl-count">Ada 19 aplikasi yang kami bangun sejak awal 2026, dari peta sebaran gerai sampai portal pengawasan per triwulan.</p>
+      </div>
+      <div class="tools-bar" role="group" aria-label="Saring aplikasi">
+        <button class="chip" type="button" data-f="semua" aria-pressed="true">Semua<span class="n"></span></button>
+        <button class="chip" type="button" data-f="portal" aria-pressed="false">Portal &amp; monitoring<span class="n"></span></button>
+        <button class="chip" type="button" data-f="data" aria-pressed="false">Data &amp; analitik<span class="n"></span></button>
+        <button class="chip" type="button" data-f="peta" aria-pressed="false">Peta<span class="n"></span></button>
+        <button class="chip" type="button" data-f="lapangan" aria-pressed="false">Instrumen lapangan<span class="n"></span></button>
+        <button class="chip" type="button" data-f="anggaran" aria-pressed="false">Anggaran &amp; reviu<span class="n"></span></button>
+        <label class="search">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="2"/><path d="m20 20-4.2-4.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="search" id="q" placeholder="Cari aplikasi, mis. peta, RAB, TW III" aria-label="Cari aplikasi">
+        </label>
+      </div>
+      <div class="tools" id="tools"></div>
+      <p class="empty" id="empty">Tidak ada aplikasi yang cocok. Coba kata lain atau pilih <button class="chip" type="button" id="reset">Semua</button></p>
+    </div>
+  </section>
 
-        // Mobile Menu Toggle (Simple placeholder)
-        document.querySelector('button.md\\:hidden').addEventListener('click', function () {
-            const menu = document.querySelector('.hidden.md\\:flex');
-            // Logic to show/hide mobile menu can be added here
-        });
-    </script>
+  <section class="band band-white" id="linimasa" aria-labelledby="lin-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="sec-kicker">Linimasa 2026</p>
+          <h2 id="lin-title">Dibangun mengikuti siklus pengawasan triwulanan</h2>
+        </div>
+        <p class="sec-lede">Setiap triwulan membawa kebutuhan baru di lapangan. Aplikasi dikelompokkan menurut triwulan saat pertama kali dibuat.</p>
+      </div>
+      <div class="timeline" id="timeline"></div>
+    </div>
+  </section>
+
+  <section class="band" id="cara-kerja" aria-labelledby="ck-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="sec-kicker">Cara kerja</p>
+          <h2 id="ck-title">Prinsip yang kami pegang saat membangun</h2>
+        </div>
+      </div>
+      <div class="principles">
+        <div class="pr">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3" stroke="currentColor" stroke-width="1.8"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" stroke="currentColor" stroke-width="1.8"/></svg></span>
+          <h3>Bersumber dari data resmi</h3>
+          <p>Angka diambil dari Portal KDKMP, SIMKOPDES, dan master kode desa Kemendagri, lalu dicocokkan per kode desa sebelum dipakai.</p>
+        </div>
+        <div class="pr">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="10.5" width="14" height="9.5" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <h3>Data per nama hanya untuk BPKP</h3>
+          <p>Halamannya boleh publik, tetapi daftar by name by address hanya terbuka untuk akun Google @bpkp.go.id.</p>
+        </div>
+        <div class="pr">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.2C5 5.9 8.1 3 12 3s7 2.9 7 6.8C19 14.9 12 21 12 21Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.8"/></svg></span>
+          <h3>Sesuai wilayah kerja Perwakilan</h3>
+          <p>Setiap Perwakilan melihat data wilayahnya sendiri, mengikuti pembagian dalam Peraturan BPKP Nomor 5 Tahun 2026.</p>
+        </div>
+        <div class="pr">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 3 5 13h6l-1 8 8-10h-6l1-8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+          <h3>Ringan dan cepat dipakai</h3>
+          <p>Kebanyakan aplikasi berupa halaman statis di GitHub Pages: dibuka dari tautan, tanpa instalasi, dan bisa dipakai dari HP di lapangan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#" aria-label="diperma, kembali ke atas">
+          <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#fff"/><rect x="14" y="16" width="36" height="7" rx="3.5" fill="#0E2350"/><rect x="14" y="28.5" width="26" height="7" rx="3.5" fill="#0E2350" opacity=".7"/><rect x="14" y="41" width="12" height="7" rx="3.5" fill="#C8102E"/></svg>
+          <span class="brand-name">diperma</span>
+        </a>
+        <p>Tim APP KDKMP, Direktorat Pengawasan Bidang Pemberdayaan Ekonomi Masyarakat, Badan Pengawasan Keuangan dan Pembangunan.</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <h4>TW IV 2026</h4>
+          <a href="https://diperma.github.io/portal-kdkmp-tw-4/">Portal pengawasan</a>
+          <a href="https://diperma.github.io/uji-petik-kdkmp-tw-4/">Lokus uji petik</a>
+          <a href="https://diperma.github.io/populasi-kdkmp-tw-4/">Populasi KDKMP</a>
+          <a href="https://diperma.github.io/monitoring-kdkmp-tw4/">Monitoring</a>
+        </div>
+        <div>
+          <h4>Arsip</h4>
+          <a href="https://diperma.github.io/portal-kdkmp-tw-3/">Portal TW III</a>
+          <a href="https://diperma.github.io/monitoring-kdkmp-tw3/">Monitoring TW III</a>
+          <a href="https://diperma.github.io/portal-kdkmp/">Observasi 1.061 KDKMP</a>
+          <a href="https://diperma.github.io/kkm-tw-i-perwakilan/">MoniDrive TW I</a>
+        </div>
+        <div>
+          <h4>Sumber</h4>
+          <a href="https://github.com/diperma">Repositori GitHub</a>
+          <a href="#cara-kerja">Cara kerja</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Tim APP KDKMP</span>
+      <span>Angka pada halaman ini per 6 Oktober 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Katalog aplikasi: kategori, triwulan (bulan repositori dibuat), dan akses.
+  var BPKP = "Login @bpkp.go.id";
+  var TOOLS = [
+    { slug: "portal-kdkmp-tw-4", name: "Portal Pengawasan TW IV", cat: "portal", tw: "TW IV", since: "Okt 2026", now: true, access: "Folder Drive BPKP",
+      desc: "Pintu masuk dokumen pengawasan TW IV: panduan teknis, kertas kerja, rekaman diseminasi, monitoring, laporan, dan aplikasi data." },
+    { slug: "monitoring-kdkmp-tw4", name: "Monitoring TW IV", cat: "portal", tw: "TW IV", since: "Okt 2026", now: true, access: "Akun Google BPKP",
+      desc: "Sheet bersama untuk isian status penugasan, laporan, dan SHP 36 Perwakilan." },
+    { slug: "uji-petik-kdkmp-tw-4", name: "Lokus Uji Petik KDKMP", cat: "data", tw: "TW IV", since: "Okt 2026", now: true, access: BPKP,
+      desc: "Lokus dan daftar lokasi uji petik per Perwakilan, termasuk usulan perubahan lokasi dengan persetujuan D302." },
+    { slug: "populasi-kdkmp-tw-4", name: "Populasi KDKMP (BNBA)", cat: "data", tw: "TW IV", since: "Okt 2026", now: true, access: BPKP,
+      desc: "Rekap wilayah dengan drilldown provinsi sampai desa, dan daftar per nama gerai, mandek, beroperasi, serta belum punya lahan." },
+    { slug: "mindmap-kdkmp", name: "Mindmap Titik Kritis APP TW IV", cat: "data", tw: "TW IV", since: "Okt 2026", now: true,
+      desc: "Mindmap interaktif proses bisnis, sub probis, hipotesis, dan risiko KDKMP, lengkap dengan galeri gambar per probis." },
+    { slug: "portal-kdkmp-tw-3", name: "Portal Pengawasan TW III", cat: "portal", tw: "TW III", since: "Jul 2026", access: "Folder Drive BPKP",
+      desc: "Tautan dokumen pengawasan PHTC APP KDKMP Triwulan III: panduan, format kertas kerja, unggah, monitoring, dan bahan sampling." },
+    { slug: "monitoring-kdkmp-tw3", name: "Monitoring dan FAQ TW III", cat: "portal", tw: "TW III", since: "Agu 2026", access: "Akun Google BPKP",
+      desc: "Monitoring penugasan dan laporan Pusat serta Perwakilan TW III, beserta tanya-jawab pelaksanaan." },
+    { slug: "kdkmp-exporter", name: "KDKMP Exporter", cat: "data", tw: "TW III", since: "Jul 2026", access: "Perlu login",
+      desc: "Menarik data Portal KDKMP dan mengunduhnya sebagai XLSX/CSV, termasuk status dan vendor 29 item sarpras per koperasi." },
+    { slug: "portal-kdkmp", name: "Observasi 1.061 KDKMP", cat: "portal", tw: "TW II", since: "Jun 2026",
+      desc: "Portal observasi 1.061 KDKMP yang diresmikan: juknis, data sampling Pusat dan Perwakilan, peta lokasi, dan monitoring unggah kertas kerja." },
+    { slug: "cek-fisik", name: "Form Cek Fisik KDKMP", cat: "lapangan", tw: "TW II", since: "Jun 2026",
+      desc: "Formulir cek fisik gerai dengan ringkasan kelengkapan peralatan dan fasilitas, bisa diunduh sebagai XLSX atau PDF." },
+    { slug: "observasi-kdkmp", name: "Form Monitoring Observasi", cat: "lapangan", tw: "TW II", since: "Jun 2026",
+      desc: "Formulir monitoring observasi cek fisik KDKMP untuk tim di lapangan." },
+    { slug: "reviu-gerai", name: "Dashboard Reviu Gerai & Gudang", cat: "anggaran", tw: "TW II", since: "Jun 2026",
+      desc: "Reviu pembangunan gerai, gudang, dan perlengkapan, dengan daftar reviu dan alur persetujuan." },
+    { slug: "app-tw2", name: "Dashboard Kesiapan Desa", cat: "data", tw: "TW II", since: "Mei 2026",
+      desc: "Dashboard kesiapan desa dan KDKMP dari data SIMKOPDES untuk pengawasan Triwulan II." },
+    { slug: "field-trip-simulator", name: "Rencana Penugasan TW II", cat: "lapangan", tw: "TW II", since: "Mei 2026",
+      desc: "Simulasi rencana penugasan lapangan beserta tarif SBM per provinsi." },
+    { slug: "timeline-generator", name: "BISMA Timeline Generator", cat: "anggaran", tw: "TW II", since: "Mei 2026",
+      desc: "Linimasa kegiatan dan rekap realisasi anggaran per RO dan jenis belanja." },
+    { slug: "peta-lahan", name: "Peta Lahan Sawah", cat: "peta", tw: "TW I", since: "Mar 2026",
+      desc: "Peta interaktif lahan sawah dilindungi dan lahan baku sawah 2024 dari data Bhumi ATR/BPN." },
+    { slug: "peta-gudang", name: "Peta Sebaran Gerai KDKMP", cat: "peta", tw: "TW I", since: "Feb 2026",
+      desc: "Peta sebaran lokasi pembangunan gerai KDKMP di seluruh Indonesia, dengan statistik dan progres pembangunan." },
+    { slug: "rab-reviu", name: "Rincian Biaya Pembangunan Gerai", cat: "anggaran", tw: "TW I", since: "Feb 2026",
+      desc: "Rincian biaya pembangunan gerai KDKMP untuk konstruksi, sarpras, dan perencanaan, lengkap dengan dokumen RAB." },
+    { slug: "kkm-tw-i-perwakilan", name: "MoniDrive TW I", cat: "portal", tw: "TW I", since: "Feb 2026",
+      desc: "Dashboard pemantauan pengumpulan kertas kerja 36 Perwakilan." }
+  ];
+  var CAT = { portal: "Portal & monitoring", data: "Data & analitik", peta: "Peta", lapangan: "Instrumen lapangan", anggaran: "Anggaran & reviu" };
+  var URL = function (t) { return "https://diperma.github.io/" + t.slug + "/"; };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+  var LOCK = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="10.5" width="14" height="9.5" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" stroke="currentColor" stroke-width="2"/></svg>';
+
+  var grid = document.getElementById("tools");
+  grid.innerHTML = TOOLS.map(function (t) {
+    return '<a class="tool" href="' + URL(t) + '" data-cat="' + t.cat + '" data-text="' + esc((t.name + " " + t.desc + " " + t.slug + " " + t.tw + " " + CAT[t.cat]).toLowerCase()) + '">' +
+      '<div class="tool-top"><span class="tool-cat">' + esc(CAT[t.cat]) + '</span><span class="tag' + (t.now ? " now" : "") + '">' + esc(t.tw) + '</span></div>' +
+      '<h3>' + esc(t.name) + '</h3><p>' + esc(t.desc) + '</p>' +
+      '<div class="tool-foot"><span class="mono">' + esc(t.slug) + '</span>' +
+      (t.access ? '<span class="access">' + LOCK + esc(t.access) + '</span>' : '<span>' + esc(t.since) + '</span>') + '</div></a>';
+  }).join("");
+  document.getElementById("apl-count").textContent = "Ada " + TOOLS.length + " aplikasi yang kami bangun sejak awal 2026, dari peta sebaran gerai sampai portal pengawasan per triwulan.";
+
+  // hitungan per kategori pada chip
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".chip[data-f]"));
+  chips.forEach(function (c) {
+    var f = c.getAttribute("data-f");
+    c.querySelector(".n").textContent = f === "semua" ? TOOLS.length : TOOLS.filter(function (t) { return t.cat === f; }).length;
+  });
+
+  var cur = "semua", q = document.getElementById("q"), empty = document.getElementById("empty");
+  function apply() {
+    var term = q.value.trim().toLowerCase(), shown = 0;
+    Array.prototype.forEach.call(grid.children, function (el) {
+      var ok = (cur === "semua" || el.getAttribute("data-cat") === cur) && (!term || el.getAttribute("data-text").indexOf(term) >= 0);
+      el.style.display = ok ? "" : "none"; if (ok) shown++;
+    });
+    empty.style.display = shown ? "none" : "block";
+  }
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () {
+      cur = c.getAttribute("data-f");
+      chips.forEach(function (x) { x.setAttribute("aria-pressed", x === c ? "true" : "false"); });
+      apply();
+    });
+  });
+  q.addEventListener("input", apply);
+  document.getElementById("reset").addEventListener("click", function () { q.value = ""; chips[0].click(); });
+
+  // linimasa triwulan
+  var TW = [["TW I", "Januari – Maret"], ["TW II", "April – Juni"], ["TW III", "Juli – September"], ["TW IV", "Oktober – Desember"]];
+  document.getElementById("timeline").innerHTML = TW.map(function (w) {
+    var items = TOOLS.filter(function (t) { return t.tw === w[0]; });
+    return '<div class="tw' + (w[0] === "TW IV" ? " current" : "") + '"><div class="tw-rail"><span class="tw-dot"></span><span class="tw-line"></span></div>' +
+      '<h3>' + w[0] + '</h3><p class="when">' + w[1] + ' 2026 · ' + items.length + ' aplikasi</p><ul>' +
+      items.map(function (t) { return '<li><a href="' + URL(t) + '">' + esc(t.name) + '<span>' + esc(t.slug) + '</span></a></li>'; }).join("") + '</ul></div>';
+  }).join("");
+
+  // garis bawah navigasi saat menggulir
+  var nav = document.getElementById("nav");
+  var onScroll = function () { nav.classList.toggle("scrolled", window.scrollY > 8); };
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+})();
+</script>
 </body>
-
 </html>
