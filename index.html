@@ -171,6 +171,31 @@ footer { background: var(--ink); color: #C3D0EA; padding: 48px 0 36px; font-size
 .foot-links a:hover { color: #fff; }
 .foot-bottom { margin-top: 36px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, .12); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: .8rem; color: #9FB4DA; }
 
+/* peta sebaran */
+.map-wrap { display: grid; grid-template-columns: 1fr 260px; gap: 36px; align-items: center; }
+.map-fig { margin: 0; }
+.map-fig img { display: block; width: 100%; height: auto; }
+.map-fig figcaption { margin-top: 10px; font-size: .8rem; color: var(--mute); }
+.legend { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.legend li { display: grid; grid-template-columns: 14px 1fr; column-gap: 12px; align-items: baseline; }
+.legend .sw { width: 14px; height: 14px; border-radius: 50%; transform: translateY(2px); }
+.legend b { font-family: var(--display); font-size: 1.45rem; letter-spacing: -.02em; display: block; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.legend span.l { font-size: .85rem; color: var(--mute); }
+
+/* foto lapangan */
+.field { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; }
+.photo { margin: 0; position: relative; border-radius: 22px; overflow: hidden; box-shadow: 0 24px 50px -30px rgba(14, 35, 80, .55); }
+.photo img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.photo figcaption { position: absolute; left: 14px; bottom: 14px; background: rgba(14, 35, 80, .82); color: #fff; font-size: .78rem; padding: 6px 12px; border-radius: 999px; }
+.goals { list-style: none; padding: 0; margin: 22px 0 0; display: flex; flex-direction: column; gap: 14px; }
+.goals li { padding: 14px 16px 14px 18px; background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--merah); border-radius: 12px; font-size: .95rem; }
+.goals li b { display: block; font-family: var(--display); font-size: 1.02rem; margin-bottom: 2px; }
+
+/* gambar kartu katalog */
+.tool { padding: 0; overflow: hidden; }
+.tool .shot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top center; background: var(--soft); border-bottom: 1px solid var(--line); }
+.tool .tool-body { display: flex; flex-direction: column; gap: 8px; padding: 16px 20px 16px; flex: 1; }
+
 /* ---------- responsif ---------- */
 @media (max-width: 1020px) {
   .hero-grid { grid-template-columns: 1fr; gap: 36px; }
@@ -178,6 +203,8 @@ footer { background: var(--ink); color: #C3D0EA; padding: 48px 0 36px; font-size
   .tw4 a, .tw4 a.wide { grid-column: span 3; }
   .principles { grid-template-columns: repeat(2, 1fr); }
   .timeline { grid-template-columns: repeat(2, 1fr); row-gap: 36px; }
+  .map-wrap, .field { grid-template-columns: 1fr; gap: 28px; }
+  .legend { flex-direction: row; flex-wrap: wrap; gap: 18px 28px; }
 }
 @media (max-width: 720px) {
   .nav-links { display: none; }
@@ -206,6 +233,7 @@ footer { background: var(--ink); color: #C3D0EA; padding: 48px 0 36px; font-size
       <span class="brand-name">diperma</span>
     </a>
     <nav class="nav-links" aria-label="Navigasi utama">
+      <a href="#sebaran">Peta</a>
       <a href="#tw-iv">TW IV 2026</a>
       <a href="#aplikasi">Aplikasi</a>
       <a href="#linimasa">Linimasa</a>
@@ -258,6 +286,30 @@ footer { background: var(--ink); color: #C3D0EA; padding: 48px 0 36px; font-size
         </div>
         <figcaption class="funnel-note">Sumber: Portal KDKMP dan master 84.070 KDKMP, diolah Tim APP KDKMP. Persentase terhadap populasi.</figcaption>
       </figure>
+    </div>
+  </section>
+
+  <section class="band band-white" id="sebaran" aria-labelledby="peta-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="sec-kicker">Peta sebaran</p>
+          <h2 id="peta-title">36.369 gerai tercatat di Portal KDKMP, dari Aceh sampai Papua</h2>
+        </div>
+        <p class="sec-lede">Setiap titik adalah satu gerai pada lahan yang sudah terpetakan. Warna menunjukkan kondisinya per 6 Oktober 2026.</p>
+      </div>
+      <div class="map-wrap">
+        <figure class="map-fig">
+          <img src="assets/peta-gerai.png" width="1718" height="632" alt="Peta titik sebaran 36.369 gerai KDKMP di Indonesia. Titik paling rapat ada di Jawa dan Sumatera; gerai yang sudah beroperasi terkumpul di Jawa Tengah, Jawa Timur, dan DI Yogyakarta." loading="lazy">
+          <figcaption>Diolah dari koordinat gerai di Portal KDKMP. Peta hanya menampilkan titik, tanpa nama koperasi.</figcaption>
+        </figure>
+        <ul class="legend" aria-label="Keterangan warna">
+          <li><span class="sw" style="background:#0E2350"></span><div><b>26.528</b><span class="l">Terbangun 100%, belum beroperasi</span></div></li>
+          <li><span class="sw" style="background:#4F7CC0"></span><div><b>8.008</b><span class="l">Sedang dibangun</span></div></li>
+          <li><span class="sw" style="background:#C8102E"></span><div><b>1.075</b><span class="l">Sudah beroperasi</span></div></li>
+          <li><span class="sw" style="background:#9AA6B8"></span><div><b>758</b><span class="l">Belum melapor progres</span></div></li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -333,7 +385,7 @@ footer { background: var(--ink); color: #C3D0EA; padding: 48px 0 36px; font-size
     </div>
   </section>
 
-  <section class="band band-white" id="linimasa" aria-labelledby="lin-title">
+  <section class="band" id="linimasa" aria-labelledby="lin-title">
     <div class="wrap">
       <div class="sec-head">
         <div>
@@ -346,7 +398,24 @@ footer { background: var(--ink); color: #C3D0EA; padding: 48px 0 36px; font-size
     </div>
   </section>
 
-  <section class="band" id="cara-kerja" aria-labelledby="ck-title">
+  <section class="band" id="lapangan" aria-labelledby="lap-title">
+    <div class="wrap field">
+      <figure class="photo">
+        <img src="assets/gerai.jpg" width="1400" height="788" alt="Anak-anak desa di dalam gerai Koperasi Desa Merah Putih yang raknya penuh barang kebutuhan sehari-hari." loading="lazy">
+        <figcaption>Suasana gerai Koperasi Desa Merah Putih</figcaption>
+      </figure>
+      <div>
+        <p class="sec-kicker">Mengapa kami mengawasi</p>
+        <h2 id="lap-title">Di balik setiap titik ada gerai yang melayani warga desa</h2>
+        <ul class="goals">
+          <li><b>Pembangunan sesuai rencana</b>Memastikan pembangunan fisik gerai, pergudangan, dan kelengkapan KDKMP berjalan sesuai perencanaan.</li>
+          <li><b>Beroperasi sesuai tujuan</b>Memastikan KDKMP beroperasi sesuai tujuannya, selaras dengan Peraturan Presiden tentang tata kelola KDKMP.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-white" id="cara-kerja" aria-labelledby="ck-title">
     <div class="wrap">
       <div class="sec-head">
         <div>
@@ -471,10 +540,11 @@ footer { background: var(--ink); color: #C3D0EA; padding: 48px 0 36px; font-size
   var grid = document.getElementById("tools");
   grid.innerHTML = TOOLS.map(function (t) {
     return '<a class="tool" href="' + URL(t) + '" data-cat="' + t.cat + '" data-text="' + esc((t.name + " " + t.desc + " " + t.slug + " " + t.tw + " " + CAT[t.cat]).toLowerCase()) + '">' +
-      '<div class="tool-top"><span class="tool-cat">' + esc(CAT[t.cat]) + '</span><span class="tag' + (t.now ? " now" : "") + '">' + esc(t.tw) + '</span></div>' +
+      '<img class="shot" src="assets/apps/' + t.slug + '.jpg" width="800" height="500" alt="Tampilan ' + esc(t.name) + '" loading="lazy">' +
+      '<div class="tool-body"><div class="tool-top"><span class="tool-cat">' + esc(CAT[t.cat]) + '</span><span class="tag' + (t.now ? " now" : "") + '">' + esc(t.tw) + '</span></div>' +
       '<h3>' + esc(t.name) + '</h3><p>' + esc(t.desc) + '</p>' +
       '<div class="tool-foot"><span class="mono">' + esc(t.slug) + '</span>' +
-      (t.access ? '<span class="access">' + LOCK + esc(t.access) + '</span>' : '<span>' + esc(t.since) + '</span>') + '</div></a>';
+      (t.access ? '<span class="access">' + LOCK + esc(t.access) + '</span>' : '<span>' + esc(t.since) + '</span>') + '</div></div></a>';
   }).join("");
   document.getElementById("apl-count").textContent = "Ada " + TOOLS.length + " aplikasi yang kami bangun sejak awal 2026, dari peta sebaran gerai sampai portal pengawasan per triwulan.";
 
