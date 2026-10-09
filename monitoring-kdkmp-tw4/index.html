@@ -34,18 +34,12 @@
   if (mobile || /[?&]buka\b/.test(location.search)) {
     window.location.replace(SHEET);
   } else {
-    // Laptop/PC: tampilkan sheet di halaman ini agar alamat diperma.github.io tetap terlihat.
+    // Laptop/PC: tampilkan sheet satu layar penuh agar alamat diperma.github.io tetap terlihat (tanpa bilah judul).
     document.getElementById("msg").remove();
-    var bar = document.createElement("div");
-    bar.className = "bar";
-    bar.innerHTML = '<b>Monitoring KDKMP TW IV 2026</b><span class="sp"></span>' +
-      '<span class="hint">Sheet tidak tampil? Pastikan browser login akun @bpkp.go.id, atau</span>' +
-      '<a href="' + SHEET + '" target="_blank" rel="noopener">Buka di Google Sheets</a>';
     var fr = document.createElement("iframe");
     fr.src = SHEET;
     fr.title = "Monitoring KDKMP TW IV 2026";
     fr.setAttribute("allow", "clipboard-read; clipboard-write");
-    document.body.appendChild(bar);
     document.body.appendChild(fr);
   }
 </script>
